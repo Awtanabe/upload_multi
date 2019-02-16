@@ -1,0 +1,22 @@
+<h1>Prototypes#new</h1>
+<p>Find me in app/views/prototypes/new.html.erb</p>
+
+<%=form_for(@prototype, html: { multipart: true } ) do |f|%>
+
+   <%= f.fields_for :thumbnails do |thumbnail|%>
+    <%= thumbnail.file_field :image %>
+    <%end%>
+  <%= f.submit "投稿する"%>
+
+<%end%>
+
+<%@prototypes.each do |prtoto| %>
+
+ <% prtoto.thumbnails.each do |thumb|%>
+
+   <%= image_tag thumb.image.url %>
+ <%end%>
+
+<%end%>
+
+
